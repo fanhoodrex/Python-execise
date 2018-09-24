@@ -1,5 +1,10 @@
-import sys
-import os
+import numpy
+import panda
+import matpolib
+import
+import
+import
+
 
 
 def display(): # 进行登陆后界面的函数定义，方便在下面的选用层级后，返回上一层时，依然可以看到选择大屏。
@@ -79,3 +84,5 @@ if __name__ == "__main__":
     employ_list = eval(open("employ_list.txt", "r").read())
     lines = []
     main()
+
+
