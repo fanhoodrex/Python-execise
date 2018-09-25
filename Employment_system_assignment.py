@@ -1,4 +1,3 @@
-
 def HR():
     again = "Yes" or "yes"
     while((again == "Yes")or(again == "yes")):
@@ -59,18 +58,14 @@ def HR():
             f.write("\n")
             f.write("\n")
             again = input("Do you want to use again?  (Yes/No) :")
-
-
-def HR_Login():
-    
+def HR_Login()
     x = input("Enter your ID. ;")
     y = input("Enter your password :")
     f = open("HR_Login.txt")
     if x and y in f.read():
         HR()
     else:
-        print("Wrong ID or password.")
-                                 
+        print("Wrong ID or password.")                            
 def HR_register():
     ch = "Yes"or"yes"
     print("Welcome to HR register system.")
@@ -90,16 +85,12 @@ def HR_register():
         else:
             print("Wrong register code.")
         ch = input("Do you want to use again?  (Yes/No) :")
-    
-    
-
 print("Welcome to the Employees Leave Management System.")
 x = int(input("What is your profession?  \n1.HR \n2.Lectruer \n3.Academic Leader \n4.HR register \nChoose one number :"))
 if x == 1:
     HR_Login()
 elif x == 4:
     HR_register()
-            
-        
+#这看起来不是很多行数
             
     
