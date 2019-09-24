@@ -10,8 +10,8 @@ print(a)
 print(type(a[1]))
 
 #3 order
-a,b,c = 2,7,8
-print(a+b*a//c) 
+a,b,c = 2,7
+print(a+b*a//c)
 a*b//c
 a*c//b
 
@@ -23,7 +23,7 @@ print(a)
 import itertools
 original_list = [[2,4,3],[1,5,6]]
 new_list = list(itertools.chain(*original_list))
-print(new_list) 
+print(new_list)
 
 #6 reverse of number
 n = 123
@@ -39,16 +39,16 @@ def ok_then_call(s,num):
     return s + str(float(int(num/2)))
 s = 'test'
 data = ok_then_call(s,11)
-print(data) 
+print(data)
 
-#8 Bitwise Operators | means OR 
+#8 Bitwise Operators | means OR
 a = set([1,2,3,4])
 b = set([1,2,5,6])
 x = a | b
 y = a & b
 print(len(x))
 
-#9 use of built-in module fraction 
+#9 use of built-in module fraction
 from fractions import Fraction
 frac = Fraction(1,3)
 frac = frac + 2
@@ -58,7 +58,7 @@ print(frac)
 # 10 Precedence order of Python Operators
 3*1**3
 
-#11 use of function 
+#11 use of function
 def fun(a):
     x = a ** 2
     y = 0
@@ -66,7 +66,7 @@ def fun(a):
         x -= 1
         y += 2
     return y
-print(fun(1)+fun(2)) 
+print(fun(1)+fun(2))
 
 #12 list method and object address: b point to a address
 a = [1,2,3]
