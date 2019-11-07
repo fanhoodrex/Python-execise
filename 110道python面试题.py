@@ -274,6 +274,7 @@ print(x)
 import numpy as np
 b = np.array(a).flatten().tolist()
 print(b)
+
 #40、x="abc",y="def",z=["d","e","f"],分别求出x.join(y)和x.join(z)返回的结果
 x="abc"
 y="def"
@@ -281,6 +282,270 @@ z=["d","e","f"]
 m=x.join(y)
 n=x.join(z)
 print(m,n)
+
+#41、举例说明异常模块中try except else finally的相关意义
+"""
+try..except..else没有捕获到异常，执行else语句
+try..except..finally不管是否捕获到异常，都执行finally语句
+"""
+try:
+    num = 100
+    print(num)
+except NameError as errorMsg:
+    print("generate error:%s"%errorMsg)
+else:
+    print("no error caught, proceed with this statement")
+finally:
+    print("finally")
+
+try:
+    num = 100
+    print(num)
+except NameError as errorMsg:
+    print("generate error:%s"%errorMsg)
+finally:
+    print("generate this whatever happen")
+
+#42、python中交换两个数值
+a,b=3,4
+print(a,b)
+a,b = b,a
+print(a,b)    
+
+#43、举例说明zip（）函数用法
+a = [1,2]
+b = [3,4]
+c = zip(a,b)
+res = [i for i in zip(a,b)]
+print(res)
+
+a = (1,2)
+b = (3,4)
+res = [i for i in zip(a,b)]
+print(res)
+
+a = "ab"
+b = "xyz"
+res = [i for i in zip(a,b)]
+print(res)
+
+#44、a="张明 98分"，用re.sub，将98替换为100
+import re
+a = "张明 98分"
+ret = re.sub(r"\d+","100",a)
+print(ret)
+
+#45、写5条常用sql语句
+"""
+show databases;
+show tables;
+desc 表名;
+select * from 表名;
+delete from 表名 where id=5;
+update students set gender=0,hometown="北京" where id=5
+"""
+
+#46、a="hello"和b="你好"编码成bytes类型
+a=b"hello"
+b="哈哈".encode()
+print(a,b)
+print(type(a),type(b))
+
+#47、[1,2,3]+[4,5,6]的结果是多少？
+#两个列表相加，等价于extend
+a = [1,2,3]
+b = [4,5,6]
+res = a + b
+print(res)
+
+#48、提高python运行效率的方法
+"""
+1、使用生成器，因为可以节约大量内存
+2、循环代码优化，避免过多重复代码的执行
+3、核心模块用Cython  PyPy等，提高效率
+4、多进程、多线程、协程
+5、多个if elif条件判断，可以把最有可能先发生的条件放到前面写，这样可以减少程序判断的次数，提高效率
+"""
+
+#49、简述mysql和redis区别
+"""
+redis： 内存型非关系数据库，数据保存在内存中，速度快
+mysql：关系型数据库，数据保存在磁盘中，检索的话，会有一定的Io操作，访问速度相对慢
+"""
+
+#50、遇到bug如何处理
+"""
+1、细节上的错误，通过print（）打印，能执行到print（）说明一般上面的代码没有问题，分段检测程序是否有问题，如果是js的话可以alert或console.log
+2、如果涉及一些第三方框架，会去查官方文档或者一些技术博客。
+3、对于bug的管理与归类总结，一般测试将测试出的bug用teambin等bug管理工具进行记录，然后我们会一条一条进行修改，修改的过程也是理解业务逻辑和提高自己编程逻辑缜密性的方法，我也都会收藏做一些笔记记录。
+4、导包问题、城市定位多音字造成的显示错误问题
+"""
+
+#51、正则匹配，匹配日期2018-03-20
+import re
+url='https://sycm.taobao.com/bda/tradinganaly/overview/get_summary.json?dateRange=2018-03-20%7C2018-03-20&dateType=recent1&device=1&token=ff25b109b&_=1521595613462'
+result = re.findall(r'dateRange=(.*?)%7C(.*?)&',url)
+print(result)
+
+#52、list=[2,3,5,4,9,6]，从小到大排序，不许用sort，输出[2,3,4,5,6,9]
+list = [2,3,5,4,9,6]
+new_list = []
+def get_min(list):
+    #get the smallest value
+    a = min(list)
+    #delete samllest value
+    list.remove(a)
+    #add the smallest value to the new list
+    new_list.append(a)
+    #ensure the existence of the last value in the list 
+    #recursively calling function to get the smallest value
+    #until the exhause 
+    if len(list) > 0:
+        get_min(list)
+    return new_list
+
+new_list = get_min(list)
+print(new_list)
+
+#53、写一个单列模式
+class Singleton(object):
+    __instance = None
+    def __new__(cls,age,name):
+        if not cls.__instance:
+            cls.__instance = object.__new__(cls)
+        return cls.__instance
+a = Singleton(18,"dougGe")
+b = Singleton(8,"douGe")
+
+print(id(a))
+print(id(b))
+
+a.age = 19 #给a指向的对象添加一个属性
+print(b.age)#获取b指向的对象的age属性
+
+#54、保留两位小数
+a = "%.o3f"%1.3335
+print(a,type(a))
+b = round(float(a),1)
+print(b)
+b = round(float(a),2)
+print(b)
+
+A = zip(("a","b","c","d","e"),(1,2,3,4,5))
+A0 = dict(A)
+#print(A0)
+
+#55、求三个方法打印结果
+def fn(k,v,dic={}):
+    dic[k]=v
+    print(dic)
+fn("one",1)
+fn("two",2)
+fn("three",3,{})
+
+#56、列出常见的状态码和意义
+"""
+200 OK 
+请求正常处理完毕
+
+204 No Content 
+请求成功处理，没有实体的主体返回
+
+206 Partial Content 
+GET范围请求已成功处理
+
+301 Moved Permanently 
+永久重定向，资源已永久分配新URI
+
+302 Found 
+临时重定向，资源已临时分配新URI
+
+303 See Other 
+临时重定向，期望使用GET定向获取
+
+304 Not Modified 
+发送的附带条件请求未满足
+
+307 Temporary Redirect 
+临时重定向，POST不会变成GET
+
+400 Bad Request 
+请求报文语法错误或参数错误
+
+401 Unauthorized 
+需要通过HTTP认证，或认证失败
+
+403 Forbidden 
+请求资源被拒绝
+
+404 Not Found 
+无法找到请求资源（服务器无理由拒绝）
+
+500 Internal Server Error 
+服务器故障或Web应用故障
+
+503 Service Unavailable 
+服务器超负载或停机维护
+"""
+
+#57、分别从前端、后端、数据库阐述web项目的性能优化
+"""
+前端优化：
+1、减少http请求、例如制作精灵图
+2、html和CSS放在页面上部，javascript放在页面下面，因为js加载比HTML和Css加载慢，所以要优先加载html和css,以防页面显示不全，性能差，也影响用户体验差
+
+后端优化：
+1、缓存存储读写次数高，变化少的数据，比如网站首页的信息、商品的信息等。应用程序读取数据时，一般是先从缓存中读取，如果读取不到或数据已失效，再访问磁盘数据库，并将数据再次写入缓存。
+2、异步方式，如果有耗时操作，可以采用异步，比如celery
+3、代码优化，避免循环和判断次数太多，如果多个if else判断，优先判断最有可能先发生的情况
+
+数据库优化：
+1、如有条件，数据可以存放于redis，读取速度快
+2、建立索引、外键等
+"""
+
+#58、使用pop和del删除字典中的"name"字段，dic={"name":"zs","age":18}
+dic = {"name":"zs","age":18}
+dic.pop("name")
+print(dic)
+dic = {"name":"zs","age":18}
+del dic["name"]
+print(dic)
+
+#59、列出常见MYSQL数据存储引擎
+"""
+InnoDB：支持事务处理，支持外键，支持崩溃修复能力和并发控制。如果需要对事务的完整性要求比较高（比如银行），要求实现并发控制（比如售票），那选择InnoDB有很大的优势。如果需要频繁的更新、删除操作的数据库，也可以选择InnoDB，因为支持事务的提交（commit）和回滚（rollback）。 
+MyISAM：插入数据快，空间和内存使用比较低。如果表主要是用于插入新记录和读出记录，那么选择MyISAM能实现处理高效率。如果应用的完整性、并发性要求比 较低，也可以使用。
+MEMORY：所有的数据都在内存中，数据的处理速度快，但是安全性不高。如果需要很快的读写速度，对数据的安全性要求较低，可以选择MEMOEY。它对表的大小有要求，不能建立太大的表。所以，这类数据库只使用在相对较小的数据库表。
+"""
+
+#60、计算代码运行结果，zip函数历史文章已经说了，得出[("a",1),("b",2)，("c",3),("d",4),("e",5)]
+A = zip(("a","b","c","d","e"),(1,2,3,4,5))
+A0 = dict(A)
+A1 = range(10)
+A2 = [i for i in A1 if i in A0]
+A3 = [A0[s] for s in A0]
+print("A0",A0)
+print("A:",[i for i in A])
+print("A2:",A2)
+print("A3:",A3)
+#dict()创建字典新方法
+x = dict([["name","chen"],["age",18]])
+print(x)
+y = dict([["name","fang"],["age",10]])
+print(y)
+
+#
+
+
+
+
+
+
+
+
+
+
 
 
 
