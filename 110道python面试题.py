@@ -652,6 +652,81 @@ print(a)
 #75、列表嵌套元组，分别按字母和数字排序
 foo = [(),(),]
 #76、列表嵌套列表排序，年龄数字相同怎么办？
+foo = [["zs",19],['11',54],["wa",23],["df",23],["xf",23]]
+a = sorted(foo,key = lambda x:(x[1],x[0]))
+print(a)
+a = sorted(foo,key=lambda x:x[0])
+print(a)
 
 #77、根据键对字典排序（方法一，zip函数）
+dic = {"name":"zs","sex":"man","city":"bj"}
+foo = zip(dic.keys(),dic.values())
+foo = [i for i in foo]
+print("字典转化成列表嵌套元组",foo)
+b = sorted(foo,key=lambda x:x[0])
+print("根据键排序",b)
+new_dic = {i[0]:i[0] for i in b}
+print("字典推导式构造新字典"，new_dic)
 
+#78、根据键对字典排序（方法二,不用zip)
+dic = {"name":"zs","sex":"man","city":"bj"}
+print("字典转化列表嵌套元组",foo)
+print(dic.items())
+b = sorted(dic.items(),key=lambda x:x[0])
+print("根据键排序",b)
+new_dic = {i[0]:i[1] for i in b}
+print("字典推导式构造新字典"，new_dic)
+
+#79、列表推导式、字典推导式、生成器
+import random
+td_list = [i for i in range(10)]
+print("列表推导式",td_list,type(td_list))
+
+ge_list = (i for i in range(10))
+print("生成器",ge_list)
+
+dic = {k:random.randint(4,9) for k in ["a","b","c","d"]}
+print("字典推导式",dic,type(dic))
+
+#80、最后出一道检验题目，根据字符串长度排序，看排序是否灵活运用
+s = ["ab","abc","a","djkl"]
+b = sorted(s,key=lambda x:len(x))
+print(b,"\n",s)
+s.sort(key=len)
+
+#81、举例说明SQL注入和解决办法
+input_name = "zs"
+sql = "select * from demo where name ='%s'"%input_name
+print("正常SQL语句",sql)
+
+input_name = "zs;drop database demo"
+sql = "select * from demo where name ='%s'"%input_name
+print("正常SQL语句",sql)
+#解决方式：通过传参数方式解决SQL注入
+params = [input_name]
+count = cs1.execute("select * from goods where name=%s",params)
+
+#82、s="info:xiaoZhang 33 shandong",用正则切分字符串输出['info', 'xiaoZhang', '33', 'shandong']
+import re
+s = "info:xiaoZhang 33 shandong"
+res = re.split(r":|",s)
+print(res)
+
+#83、正则匹配以163.com结尾的邮箱
+email_list = ["xiaowang@163.com","xiaozhang@163.com",".com.chenjie@qq.com"]
+for email in email_list:
+    ret = re.match("[\w]{4,20}@163\.com$",email)
+    if ret:
+        print("%s is the email address, after matching is:%s"%(email,ret.group()))
+    else:
+        print("%s does not satisfy thg requirement"%email)
+
+#84、递归求和
+def get_sum(num):
+    if num >= 1:
+        res = num + get_sum(num-1)
+    else:
+        res = 0
+    return res
+res = get_sum(10)
+print(res)
