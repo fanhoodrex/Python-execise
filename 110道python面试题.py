@@ -730,3 +730,166 @@ def get_sum(num):
     return res
 res = get_sum(10)
 print(res)
+
+#85、python字典和json字符串相互转化方法
+"""json.dumps()字典转json字符串，json.loads()json转字典"""
+import json
+dic = {"name":"zs"}
+res = json.dumps(dic)
+print(res,type(res))
+ret = json.loads(res)
+print(ret,type(ret))
+
+#86、MyISAM 与 InnoDB 区别
+"""1、InnoDB 支持事务，MyISAM 不支持，这一点是非常之重要。事务是一种高
+级的处理方式，如在一些列增删改中只要哪个出错还可以回滚还原，而 MyISAM
+就不可以了；
+2、MyISAM 适合查询以及插入为主的应用，InnoDB 适合频繁修改以及涉及到
+安全性较高的应用；
+3、InnoDB 支持外键，MyISAM 不支持；
+4、对于自增长的字段，InnoDB 中必须包含只有该字段的索引，但是在 MyISAM
+表中可以和其他字段一起建立联合索引；
+5、清空整个表时，InnoDB 是一行一行的删除，效率非常慢。MyISAM 则会重
+建表；
+"""
+
+#87、统计字符串中某字符出现次数
+str = "张三 美国 张三 哈哈 张 三"
+res = str.count("张三")
+print(res)
+
+#88、字符串转化大小写
+str = "HHHuuu"
+print(str.upper())
+print(str.lower())
+
+#89、用两种方法去空格
+str = "hello world ha ha"
+res = str.replace(" ","")
+print(res)
+
+list=str.split(" ")
+res = "".join(list)
+print(res)
+
+#90、正则匹配不是以4和7结尾的手机号
+tels = []
+for tel in tels:
+    ret = re.match()
+    if ret:
+        print("the desired number is")
+    else:
+        print("%s is not")：
+
+#91、简述python引用计数机制
+import time
+class Animal(object):
+    def __init__(self,name):
+        print('__intit__ method is called')
+        self.__name = name
+        
+    def __del__(self):
+        print("__del__ method is called")
+        print("%s object"%self._name)
+cat = Animal("bosimao")
+cat2 = cat
+cat3 = cat
+print(id(cat),id(cat3),id(cat3))
+print("--马上删除cat对象")
+del cat
+del cat2
+del cat3 
+
+#92、int("1.4"),int(1.4)输出结果？
+"""
+int("1.4")报错，int(1.4)输出1
+"""
+
+#93、列举3条以上PEP8编码规范
+"""
+1、顶级定义之间空两行，比如函数或者类定义。
+2、方法定义、类定义与第一个方法之间，都应该空一行
+3、三引号进行注释
+4、使用Pycharm、Eclipse一般使用4个空格来缩进代码
+"""
+
+#94、正则表达式匹配第一个URL
+"""findall结果无需加group(),search需要加group()提取"""
+
+#95、正则匹配中文
+
+#96、简述乐观锁和悲观锁
+"""
+悲观锁, 就是很悲观，每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候都会上锁，
+这样别人想拿这个数据就会block直到它拿到锁。传统的关系型数据库里边就用到了很多这种锁机制，
+比如行锁，表锁等，读锁，写锁等，都是在做操作之前先上锁。
+乐观锁，就是很乐观，每次去拿数据的时候都认为别人不会修改，所以不会上锁，
+但是在更新的时候会判断一下在此期间别人有没有去更新这个数据，可以使用版本号等机制，乐观锁适用于多读的应用类型，这样可以提高吞吐量
+"""
+
+#97、r、r+、rb、rb+文件打开模式区别
+
+#98、Linux命令重定向 > 和 >>
+
+#99、正则表达式匹配出<html><h1>www.itcast.cn</h1></html>
+
+#100、python传参数是传值还是传址？
+"""
+Python中函数参数是引用传递（注意不是值传递）。对于不可变类型（数值型、字符串、元组），因变量不能修改，
+所以运算不会影响到变量自身；而对于可变类型（列表字典）来说，函数体运算可能会更改传入的参数变量。
+"""
+
+#101、求两个列表的交集、差集、并集
+
+#102、生成0-100的随机数
+"""
+random.random()生成0-1之间的随机小数，所以乘以100
+"""
+
+#103、lambda匿名函数好处
+"""
+精简代码，lambda省去了定义函数，map省去了写for循环过程
+"""
+a = ["a","b","c"," "," ","e","","","f"]
+res = list(map(lambda x:"NUll" if x == "" else x,a))
+print(x)
+
+#104、常见的网络传输协议
+"""
+UDP、TCP、FTP、HTTP、SMTP等等
+"""
+
+#105、单引号、双引号、三引号用法
+"""
+1、单引号和双引号没有什么区别，不过单引号不用按shift，打字稍微快一点。表示字符串的时候，单引号里面可以用双引号，而不用转义字符,反之亦然
+2、但是如果直接用单引号扩住单引号，则需要转义，像这样：
+ ' She said:'Yes.' '
+3、三引号可以直接书写多行，通常用于大段，大篇幅的字符串
+hello
+world
+"""
+
+#106、python垃圾回收机制
+
+#107、HTTP请求中get和post区别
+"""
+1、GET请求是通过URL直接请求数据，数据信息可以在URL中直接看到，
+比如浏览器访问；而POST请求是放在请求头中的，我们是无法直接看到的；
+2、GET提交有数据大小的限制，一般是不超过1024个字节，而这种说法也不完全准确，
+HTTP协议并没有设定URL字节长度的上限，而是浏览器做了些处理，
+所以长度依据浏览器的不同有所不同；POST请求在HTTP协议中也没有做说明，一般来说是没有设置限制的，
+但是实际上浏览器也有默认值。总体来说，少量的数据使用GET，大量的数据使用POST。
+3、GET请求因为数据参数是暴露在URL中的，所以安全性比较低，比如密码是不能暴露的，
+就不能使用GET请求；POST请求中，请求参数信息是放在请求头的，所以安全性较高，可以使用。
+在实际中，涉及到登录操作的时候，尽量使用HTTPS请求，安全性更好。
+"""
+
+#108、python中读取Excel文件的方法
+import pandas as pd
+df = pd.read_excel("333.xlsx")
+print(df)
+
+#109、简述多线程、多进程
+
+#110、python正则中search和match
+
