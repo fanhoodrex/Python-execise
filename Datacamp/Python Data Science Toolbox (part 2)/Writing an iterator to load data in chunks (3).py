@@ -1,0 +1,23 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Oct 20 01:14:11 2019
+
+@author: Zac_Fang
+"""
+
+# Code from previous exercise
+urb_pop_reader = pd.read_csv('ind_pop_data.csv', chunksize=1000)
+df_urb_pop = next(urb_pop_reader)
+df_pop_ceb = df_urb_pop[df_urb_pop['CountryCode'] == 'CEB']
+pops = zip(df_pop_ceb['Total Population'], 
+           df_pop_ceb['Urban population (% of total)'])
+pops_list = list(pops)
+# Use list comprehension to create new DataFrame column 'Total Urban Population'
+df_pop_ceb['Total Urban Population'] = [ int(i[0]*i[1]*0.01) for i in pops_list ]
+# Plot urban population data
+df_pop_ceb.plot(kind='scatter', x='Year', y='Total Urban Population')
+plt.show()
+
+
+
+
