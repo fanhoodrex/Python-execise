@@ -5,6 +5,6 @@ for s in'python':
     time.sleep(1)
     print(s,end='')
 else:   
-    print('exit successfully')
+    print('exit successfully!')
     
    
