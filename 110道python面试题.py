@@ -551,8 +551,8 @@ print(y)
  """
 
 #62、简述cookie和session的区别
- """
- 1，session 在服务器端，cookie 在客户端（浏览器）
+"""
+1，session 在服务器端，cookie 在客户端（浏览器）
 2、session 的运行依赖 session id，而 session id 是存在 cookie 中的，也就是说，如果浏览器禁用了 cookie ，同时 session 也会失效，存储Session时，键与Cookie中的sessionid相同，值是开发人员设置的键值对信息，进行了base64编码，过期时间由开发人员设置
 3、cookie安全性比session差
 """
@@ -666,7 +666,7 @@ print("字典转化成列表嵌套元组",foo)
 b = sorted(foo,key=lambda x:x[0])
 print("根据键排序",b)
 new_dic = {i[0]:i[0] for i in b}
-print("字典推导式构造新字典"，new_dic)
+print("字典推导式构造新字典"%(new_dic))
 
 #78、根据键对字典排序（方法二,不用zip)
 dic = {"name":"zs","sex":"man","city":"bj"}
@@ -675,7 +675,7 @@ print(dic.items())
 b = sorted(dic.items(),key=lambda x:x[0])
 print("根据键排序",b)
 new_dic = {i[0]:i[1] for i in b}
-print("字典推导式构造新字典"，new_dic)
+print("字典推导式构造新字典"+str(new_dic))
 
 #79、列表推导式、字典推导式、生成器
 import random
@@ -779,7 +779,7 @@ for tel in tels:
     if ret:
         print("the desired number is")
     else:
-        print("%s is not")：
+        print("%s is not")
 
 #91、简述python引用计数机制
 import time
